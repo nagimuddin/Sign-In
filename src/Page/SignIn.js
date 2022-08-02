@@ -1,38 +1,22 @@
-import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import app from "../firebase.init";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-const auth = getAuth(app);
+import { useRef } from "react";
 
 const SignIn = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-  };
+    const emailRef = useRef("");
+    const passwordRef = useRef("");
 
-  const forgotPasswordHandler = (event) => {
-    const email = emailRef.current.value;
-  }
-  // const auth = getAuth();
-  // createUserWithEmailAndPassword(auth, email, password)
-  //   .then((userCredential) => {
-  //     // Signed in
-  //     const user = userCredential.user;
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // ..
-  //   });
+    const handelSubmit = event => {
+        event.preventDefault();
+
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        console.log(email, password);
+    }
 
   return (
     <div className="bg-slate-100 w-1/2 m-auto">
@@ -43,14 +27,14 @@ const SignIn = () => {
           </h1>
         </div>
         <div>
-          <form onSubmit={onSubmit} className="grid gap-4">
+          <form onSubmit={handelSubmit} className="grid gap-4">
             <input
               className="border border-cyan-300 rounded-lg py-2 pl-2 pr-40"
               type="text"
               name="email"
               id="email"
-              value="email"
-              ref="emailRef"
+              ref={emailRef}
+            //   value="email"
               placeholder="Please Enter Your Email"
               required
             />
@@ -59,19 +43,18 @@ const SignIn = () => {
               type="password"
               name="password"
               id="password"
-              value="password"
-              ref="passwordRef"
-              placeholder="Please Enter Your Password"
+              ref={passwordRef}
+            //   value="password"
+              placeholder="Enter Your Password"
               required
             />
             <button
-              // onClick={handleGoogleSignIn}
               type="submit"
               className="rounded-lg bg-slate-300 py-2 text-slate-500 font-semibold"
             >
               Sign In
             </button>
-            <p onClick={forgotPasswordHandler} className="flex justify-center">Forgot Password?</p>
+            <p className="flex justify-center">Forgot Password?</p>
           </form>
           <div className="check-box flex justify-center gap-x-2 m-4">
             <input type="checkbox" />
@@ -105,10 +88,11 @@ const SignIn = () => {
           {" "}
           <FaChevronLeft /> Back
         </p>
-        <Link to="/sign-up"><p className="text-cyan-300">Sign Up</p></Link>
+        <Link to="/signup"><p className="text-cyan-300">Sign Up</p></Link>
       </div>
     </div>
   );
 };
 
 export default SignIn;
+

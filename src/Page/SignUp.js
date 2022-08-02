@@ -1,22 +1,25 @@
-import React, { useRef } from "react";
-// import app from "../firebase.init";
+import React, { useRef } from 'react';
+import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-// const auth = getAuth(app);
+function SignUp() {
 
-const SignUp = () => {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+    const nameRef = useRef("");
+    const emailRef = useRef("");
+    const passwordRef = useRef("");
+    const confirmPasswordRef = useRef("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-  };
-  
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const confirmPassword = confirmPasswordRef.current.value;
+        console.log(name, email, password, confirmPassword);
+    }
+
+
   return (
     <div className="bg-slate-100 w-1/2 m-auto">
       <div className="section grid justify-center">
@@ -26,14 +29,14 @@ const SignUp = () => {
           </h1>
         </div>
         <div>
-          <form onSubmit={onSubmit} className="grid gap-4">
+          <form onSubmit={handleSubmit} className="grid gap-4">
           <input
               className="border border-cyan-300 rounded-lg py-2 pl-2 pr-40"
               type="text"
               name="name"
               id="name"
-              value="name"
-              ref="nameRef"
+              ref={nameRef}
+            //   value="name"
               placeholder="Please Enter Your Name"
               required
             />
@@ -42,8 +45,8 @@ const SignUp = () => {
               type="text"
               name="email"
               id="email"
-              value="email"
-              ref="emailRef"
+              ref={emailRef}
+            //   value="email"
               placeholder="Please Enter Your Email"
               required
             />
@@ -52,13 +55,22 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
-              value="password"
-              ref="passwordRef"
-              placeholder="Please Enter Your Password"
+              ref={passwordRef}
+            //   value="password"
+              placeholder="Enter Your Password"
+              required
+            />
+            <input
+              className="border border-black rounded-lg py-2 pl-2 pr-40"
+              type="confirmPassword"
+              name="confirmPassword"
+              id="confirmPassword"
+              ref={confirmPasswordRef}
+            //   value="password"
+              placeholder="Confirm Your Password"
               required
             />
             <button
-              // onClick={handleGoogleSignIn}
               type="submit"
               className="rounded-lg bg-slate-300 py-2 text-slate-500 font-semibold"
             >
@@ -72,11 +84,10 @@ const SignUp = () => {
           {" "}
           <FaChevronLeft /> Back
         </p>
-        <p className="text-cyan-300">Sign Up</p>
+        <Link to="/signin"><p className="text-cyan-300">Sign In</p></Link>
       </div>
     </div>
   );
 };
 
 export default SignUp;
-
