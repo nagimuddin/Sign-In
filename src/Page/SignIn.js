@@ -1,22 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRef } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../firebase";
 
 const SignIn = () => {
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
 
-    const emailRef = useRef("");
-    const passwordRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
 
-    const handelSubmit = event => {
-        event.preventDefault();
+  const navigate = useNavigate();
 
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+  const handelSubmit = (event) => {
+    event.preventDefault();
 
-        console.log(email, password);
-    }
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    signInWithEmailAndPassword(email, password);
+  };
+  
+  if (user) {
+    navigate("/");
+  }
 
   return (
     <div className="bg-slate-100 w-1/2 m-auto">
@@ -34,7 +48,7 @@ const SignIn = () => {
               name="email"
               id="email"
               ref={emailRef}
-            //   value="email"
+              //   value="email"
               placeholder="Please Enter Your Email"
               required
             />
@@ -44,7 +58,7 @@ const SignIn = () => {
               name="password"
               id="password"
               ref={passwordRef}
-            //   value="password"
+              //   value="password"
               placeholder="Enter Your Password"
               required
             />
@@ -88,11 +102,12 @@ const SignIn = () => {
           {" "}
           <FaChevronLeft /> Back
         </p>
-        <Link to="/signup"><p className="text-cyan-300">Sign Up</p></Link>
+        <Link to="/sign-up">
+          <p className="text-cyan-300">Sign Up</p>
+        </Link>
       </div>
     </div>
   );
 };
 
 export default SignIn;
-
