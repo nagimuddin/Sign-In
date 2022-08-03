@@ -4,7 +4,7 @@ import { BsGithub, BsFacebook } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRef } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import auth from "../firebase";
+import auth from "../../firebase";
 
 const SignIn = () => {
   const [

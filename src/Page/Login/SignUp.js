@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
-import auth from "../firebase";
+import auth from "../../firebase";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 function SignUp() {
@@ -18,6 +18,8 @@ function SignUp() {
   const confirmPasswordRef = useRef("");
 
   const navigate = useNavigate();
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +43,7 @@ function SignUp() {
           <h1 className="flex justify-center text-4xl font-bold text-cyan-300 py-8">
             ZOOMLA
           </h1>
+          <p>{error?.message}</p>
         </div>
         <div>
           <form onSubmit={handleSubmit} className="grid gap-4">
