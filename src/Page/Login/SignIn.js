@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub, BsFacebook } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
@@ -19,6 +19,10 @@ const SignIn = () => {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
   const handelSubmit = (event) => {
     event.preventDefault();
 
@@ -29,7 +33,7 @@ const SignIn = () => {
   };
   
   if (user) {
-    navigate("/");
+    navigate(from, {replace: true});
   }
 
   return (
