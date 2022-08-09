@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
     return (
-        <div>
+        <div className='text-center text-4xl'>
             <h1>Welcom to Home</h1>
         </div>
     )

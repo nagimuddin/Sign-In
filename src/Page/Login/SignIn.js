@@ -1,10 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { BsGithub, BsFacebook } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { useRef } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
+import SocialLogin from "./SocialLogin";
 
 const SignIn = () => {
   const [
@@ -20,20 +19,30 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
+  let errorElement;
 
   const from = location.state?.from?.pathname || '/';
 
   const handelSubmit = (event) => {
     event.preventDefault();
-
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
     signInWithEmailAndPassword(email, password);
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    errorElement = <div>
+      <p className="text-red-600">Error: {error.message}</p>
+    </div>                                    
+}
   
   if (user) {
-    navigate(from, {replace: true});
+    navigate('/zoom');
   }
 
   return (
@@ -66,6 +75,7 @@ const SignIn = () => {
               placeholder="Enter Your Password"
               required
             />
+            {errorElement}
             <button
               type="submit"
               className="rounded-lg bg-slate-300 py-2 text-slate-500 font-semibold"
@@ -74,33 +84,9 @@ const SignIn = () => {
             </button>
             <p className="flex justify-center">Forgot Password?</p>
           </form>
-          <div className="check-box flex justify-center gap-x-2 m-4">
-            <input type="checkbox" />
-            <p>Keep Me Signed In</p>
-          </div>
-          <div className="flex justify-center items-center gap-2">
-            <hr className="w-full h-[1px] bg-black border-none" />
-            <h2 className="shrink-0">or Sign In with</h2>
-            <hr className="w-full h-[1px] bg-black border-none" />
-          </div>
-          <div>
-            <ul className="flex justify-center items-center gap-24 m-4">
-              <li className="">
-                {" "}
-                <FcGoogle className="ml-4 mb-4" /> Google
-              </li>
-              <li className="">
-                {" "}
-                <BsGithub className="ml-4 mb-4" /> GitHub
-              </li>
-              <li className="">
-                {" "}
-                <BsFacebook className="ml-4 mb-4" /> Facebook
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
+      <SocialLogin></SocialLogin>
       <div className="flex justify-between m-10 pb-5">
         <p className="flex items-center gap-1">
           {" "}

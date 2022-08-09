@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import auth from "../../firebase";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import SocialLogin from "./SocialLogin";
 
 function SignUp() {
   const [
@@ -94,6 +95,9 @@ function SignUp() {
               Sign Up
             </button>
           </form>
+          <div>
+            <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
       <div className="flex justify-between m-10 pb-5">

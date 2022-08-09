@@ -15,14 +15,11 @@ function App() {
       <Header></Header>
       <Routes>
       <Route path="/" element={<Home></Home>}></Route>
-      <Route path="/zoom" element={<Zoom></Zoom>}></Route>
+      <Route path="/check-out" element={<CheckOut></CheckOut>}></Route>
       <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
       <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
-      <Route path="/check-out" element={
-      <RequireAuth>
-        <CheckOut></CheckOut>
-      </RequireAuth>
-      }></Route>
+      <Route path="/zoom" element={
+      <RequireAuth><Zoom></Zoom> </RequireAuth>}></Route>
       </Routes>
       <Footer></Footer>
       </div>
