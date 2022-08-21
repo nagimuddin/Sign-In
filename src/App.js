@@ -1,18 +1,20 @@
 import './App.css';
 import { Routes,Route } from "react-router-dom";
 import Home from './Page/Home';
-import Header from './Shared/Header';
+import Topbar from './Shared/Topbar';
 import Footer from './Shared/Footer';
 import SignUp from './Page/Login/SignUp';
 import SignIn from './Page/Login/SignIn';
 import CheckOut from './Page/CheckOut/CheckOut';
 import RequireAuth from './Page/Login/RequireAuth';
 import Zoom from './Page/Zoom/Zoom';
+import Sidebar from './Shared/Sidebar';
 
 function App() {
   return (
       <div>
-      <Header></Header>
+      <Topbar></Topbar>
+      <Sidebar></Sidebar>
       <Routes>
       <Route path="/" element={<Home></Home>}></Route>
       <Route path="/check-out" element={<CheckOut></CheckOut>}></Route>
