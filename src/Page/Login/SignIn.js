@@ -82,7 +82,7 @@ const SignIn = () => {
             >
               Sign In
             </button>
-            <p className="flex justify-center">Forgot Password?</p>
+            <p className="flex justify-center">Forgot Password? <span className="text-red-600">Reset It</span></p>
           </form>
         </div>
       </div>

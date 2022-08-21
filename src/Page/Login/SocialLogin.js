@@ -4,25 +4,26 @@ import { BsGithub, BsFacebook } from "react-icons/bs";
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Shared/Loading";
 
 function SocialLogin() {
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithGithub, ghUser, ghLoading, ghError] = useSignInWithGithub(auth);
-  const [signInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
+  const [signInWithFacebook, user2, loading2, error2] = useSignInWithFacebook(auth);
   const navigate = useNavigate();
   let errorElement;
 
-  if (gError || ghError || fError) {
+  if (error || error1 || error2) {
       errorElement = <div>
-        <p className="text-red-600">Error: {gError?.message} {ghError?.message} {fError?.message}</p>
+        <p className="text-red-600">Error: {error?.message} {error1?.message} {error2?.message}</p>
       </div>                                    
   }
 
-  if (gLoading || ghLoading || fLoading) {
-    return <p>Loading...</p>;
+  if (loading || loading1 || loading2) {
+    return <p><Loading></Loading></p>;
   }
 
-  if (gUser || ghUser || fUser) {
+  if (user || user1 || user2) {
     navigate('/zoom');
   }
   return (
