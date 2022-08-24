@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <div className="section">
-      <nav className="sticky top-0 h-20 bg-slate-700 text-white list-none flex items-center justify-end gap-5 ml-24 pr-4 border-b-1 border-gray-500">
+      <nav className="sticky top-0 h-20 bg-slate-700 text-white list-none flex items-center justify-end gap-5 ml-24 pr-4 border-b border-gray-800">
         <div className="form-control">
           <li className="bg-slate-700">
             <form>
