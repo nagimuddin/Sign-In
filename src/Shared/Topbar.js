@@ -6,7 +6,7 @@ import auth from "../firebase";
 import { signOut } from "firebase/auth";
 import { Input } from "@mantine/core";
 
-const Header = () => {
+const Topbar = () => {
   const [user] = useAuthState(auth);
 
   const handleSignOut = () => {
@@ -14,10 +14,9 @@ const Header = () => {
   };
 
   return (
-    <div className="section">
-      <nav className="sticky top-0 h-20 bg-slate-700 text-white list-none flex items-center justify-end gap-5 ml-24 pr-4 border-b border-gray-800">
-        <div className="form-control">
-          <li className="bg-slate-700">
+      <div className="section sticky top-0 h-20 bg-[#1c1f2e] text-white list-none flex items-center justify-end gap-5 ml-20 pr-4 border-b border-gray-800">        
+        <ul>
+        <li className="bg-slate-700">
             <form>
               <Input
                 icon={<FiSearch />}
@@ -27,7 +26,7 @@ const Header = () => {
               />
             </form>
           </li>
-        </div>
+        </ul>
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -53,9 +52,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
-      </nav>
-    </div>
+      </div>
   );
 };
 
-export default Header;
+export default Topbar;

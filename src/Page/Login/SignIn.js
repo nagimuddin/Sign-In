@@ -21,7 +21,7 @@ const SignIn = () => {
   const location = useLocation();
   let errorElement;
 
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/home';
 
   const handelSubmit = (event) => {
     event.preventDefault();
@@ -42,7 +42,7 @@ const SignIn = () => {
 }
   
   if (user) {
-    navigate('/zoom');
+    navigate('/home');
   }
 
   return (

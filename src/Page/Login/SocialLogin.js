@@ -24,7 +24,7 @@ function SocialLogin() {
   }
 
   if (user || user1 || user2) {
-    navigate('/zoom');
+    navigate('/home');
   }
   return (
     <div className="section bg-slate-100 w-1/2 m-auto">
