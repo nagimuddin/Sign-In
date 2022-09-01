@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Page/Home";
-import Footer from "./Shared/Footer";
 import SignUp from "./Page/Login/SignUp";
 import SignIn from "./Page/Login/SignIn";
 import CheckOut from "./Page/CheckOut/CheckOut";
@@ -23,7 +22,6 @@ function App() {
           }
         ></Route>
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }

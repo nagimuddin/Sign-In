@@ -14,45 +14,56 @@ const Topbar = () => {
   };
 
   return (
-      <div className="section sticky top-0 h-20 bg-[#1c1f2e] text-white list-none flex items-center justify-end gap-5 ml-20 pr-4 border-b border-gray-800">        
-        <ul>
-        <li className="bg-slate-700">
-            <form>
+    <div
+      className="section p-1 sm:p-3 sm:py-4 bg-[#212534] text-white fixed top-0 left-0 sm:pl-10 pl-3 w-full z-10 border-b"
+    >
+      <div>
+        <ul className="flex items-center justify-between gap-x-2 sm:gap-x-2.5">
+          <li className="hidden sm:block font-medium text-2xl sm:pl-20 capitalize">
+            Home
+          </li>
+          <li className="ml-auto hidden sm:block grow-0 shrink-0 basis-auto ">
+            <form className="relative z-10 ">
               <Input
+                className=""
                 icon={<FiSearch />}
-                placeholder="Search By Keyword"
+                variant="filled"
+                placeholder="Search by keyword"
                 radius="md"
                 size="md"
               />
             </form>
           </li>
-        </ul>
-        <div className="dropdown dropdown-end">
-          <label tabindex="0" className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="#" />
+          <li className="w-12 h-12">
+            <div className="dropdown dropdown-end">
+              <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src="https://placeimg.com/80/80/people" alt="#" />
+                </div>
+              </label>
+              <ul
+                tabIndex="0"
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-slate-700 rounded-box w-52"
+              >
+                <li>Profile</li>
+                <li>Update</li>
+                <li>
+                  {user ? (
+                    <Link to="/sign-in" onClick={handleSignOut}>
+                      <p>Sign-Out</p>
+                    </Link>
+                  ) : (
+                    <Link to="/sign-in">
+                      <p>Sign-In</p>
+                    </Link>
+                  )}
+                </li>
+              </ul>
             </div>
-          </label>
-          <ul
-            tabindex="0"
-            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-slate-700 rounded-box w-52"
-          >
-            <li>Profile</li>
-            <li>Update</li>
-            <li>
-              {user ? (
-                <Link to="/sign-in" onClick={handleSignOut}>
-                  <p>Sign-Out</p>
-                </Link>
-              ) : (
-                <Link to="/sign-in">
-                  <p>Sign-In</p>
-                </Link>
-              )}
-            </li>
-          </ul>
-        </div>
+          </li>
+        </ul>
       </div>
+    </div>
   );
 };
 
