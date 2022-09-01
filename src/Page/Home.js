@@ -10,7 +10,7 @@ function Home() {
       <Header></Header>
       <main className="w-full sm:ml-[90px]">
         <Topbar></Topbar>
-        <section className="home-body bg-[#212534] pt-[80px] flex w-full">
+        <section className="home-body bg-[#212534] pt-[80px] flex flex-wrap lg:flex-nowrap w-full">
           <div className="p-8 sm:pt-8 lg:pt-16 w-full border-r">
             <Card></Card>
           </div>

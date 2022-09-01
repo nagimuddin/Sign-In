@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Card() {
   return (
-    <div className="card grid justify-center grid-cols-2 md:gap-8 gap-5 mx-w-xl mx-auto">
+    <div className="card grid justify-center grid-cols-1 sm:grid-cols-2 md:gap-8 gap-5 mx-w-xl mx-auto">
       <Link
         to="/home"
         className="bg-[#ff742e] rounded-[20px] p-[30px] cursor-pointer"

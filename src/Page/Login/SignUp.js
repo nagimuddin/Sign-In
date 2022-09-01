@@ -8,7 +8,7 @@ import {
   useSendPasswordResetEmail,
 } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import { ClipLoader } from "react-spinners";
+// import { ClipLoader } from "react-spinners";
 
 function SignUp() {
   const [
